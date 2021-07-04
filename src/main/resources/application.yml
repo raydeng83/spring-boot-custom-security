@@ -3,23 +3,15 @@ spring:
     cache: false
     mode: LEGACYHTML5
 
-  #  ldap:
-  #      -
-  #        tenantId: ldap1
-  #        url: ldap://opendj.example.com:1389/
-  #        baseDn: dc=example,dc=com
-  #        username: cn=Directory Manager
-  #        password: password
-  #        userDnPattern: uid={0}
-  #      -
-  #        tenantId: ldap2
-  #        url: ldap://opendj.example.com:2389/
-  #        baseDn: dc=example,dc=com
-  #        username: cn=Directory Manager
-  #        password: password
-  #        userDnPattern: uid={0}
-  ldap:
+
+data-source:
+  ldap1:
     base: dc=example,dc=com
     username: cn=Directory Manager
     password: password
     urls: ldap://opendj.example.com:1389
+  ldap2:
+    base: dc=example,dc=com
+    username: cn=Directory Manager
+    password: password
+    urls: ldap://opendj.example.com:2389

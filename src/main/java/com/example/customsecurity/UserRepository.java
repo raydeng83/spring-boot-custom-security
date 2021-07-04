@@ -1,6 +1,7 @@
 package com.example.customsecurity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.query.LdapQuery;
@@ -19,7 +20,6 @@ import static org.springframework.ldap.query.LdapQueryBuilder.query;
 
 @Service
 public class UserRepository {
-
     private static final Integer THREE_SECONDS = 3000;
 
     @Autowired

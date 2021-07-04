@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.query.LdapQuery;
 import org.springframework.ldap.query.SearchScope;
 import org.springframework.ldap.support.LdapUtils;
@@ -23,9 +24,22 @@ public class UserRepository {
     private static final Integer THREE_SECONDS = 3000;
 
     @Autowired
-    private LdapTemplate ldapTemplate;
+    private Environment env;
 
-    public User getUserByUid(String uid) {
+//    @Autowired
+//    private LdapTemplate ldapTemplate;
+
+    public User getUserByUid(String uid, String dataSource) {
+
+        LdapContextSource ctxSrc = new LdapContextSource();
+        ctxSrc.setUrl(env.getRequiredProperty("data-source."+ dataSource + ".urls"));
+        ctxSrc.setBase(env.getRequiredProperty("data-source."+ dataSource + ".base"));
+        ctxSrc.setUserDn(env.getRequiredProperty("data-source."+ dataSource + ".username"));
+        ctxSrc.setPassword(env.getRequiredProperty("data-source."+ dataSource + ".password"));
+
+        ctxSrc.afterPropertiesSet(); // this method should be called.
+
+        LdapTemplate ldapTemplate = new LdapTemplate(ctxSrc);
 
         LdapQuery query = query()
                 .searchScope(SearchScope.SUBTREE)

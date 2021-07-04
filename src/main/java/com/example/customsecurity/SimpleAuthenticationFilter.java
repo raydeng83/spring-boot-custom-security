@@ -29,7 +29,7 @@ public class SimpleAuthenticationFilter
 
         String username = obtainUsername(request);
         String password = obtainPassword(request);
-        String dataSource = "ldap1";
+        String dataSource = "ldap2";
 
 
         String usernameDomain = String.format("%s%s%s", username.trim(),

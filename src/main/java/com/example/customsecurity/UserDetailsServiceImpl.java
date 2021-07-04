@@ -21,7 +21,7 @@ class UserDetailsServiceImpl implements UserDetailsService {
         if (usernameAndDomain == null || usernameAndDomain.length != 2) {
             throw new UsernameNotFoundException("Username and domain must be provided");
         }
-        User user = userRepository.getUserByUid(usernameAndDomain[0]);
+        User user = userRepository.getUserByUid(usernameAndDomain[0], usernameAndDomain[1]);
         if (user == null) {
             throw new UsernameNotFoundException(
                     String.format("Username not found for domain, username=%s, domain=%s",

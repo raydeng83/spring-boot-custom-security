@@ -1,36 +1,36 @@
-<html>
+<!DOCTYPE "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <link rel="stylesheet" th:href="@{/assets/third-party/bootstrap/dist/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/assets/static/bootstrap.min.css}" />
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <font color="white"><h3 th:text="#{login.header}"/></font>
+      <font color="white"><h3 th:text="#{login.header}"></h3></font>
     </nav>
     <br/><br/><br/><br/>
     <div th:if="${error}">
       <div align="center">
-        <p th:text="${error}"/>
+        <p th:text="${error}"></p>
       </div>
     </div>
     <div class="container">
       <form th:action="@{/login}" method='POST' id='loginForm' class='cssform' autocomplete='off'>
         <div class="form-group">
-          <label for="username"><h4 th:text="#{login.username}"/></label>
+          <label for="username"><h4 th:text="#{login.username}"></h4></label>
           <input type="text" name='username' class="form-control" placeholder="username" id='username'/>
         </div>
         <div class="form-group">
-          <label for="password"><h4 th:text="#{login.password}"/></label>
+          <label for="password"><h4 th:text="#{login.password}"></h4></label>
           <input type="password" name='password' class="form-control" placeholder="password" id='password'/>
         </div>
+        <div class="form-group">
+          <label for="password"><h4 th:text="#{login.dataSource}"></h4></label>
+          <input type="text" name='dataSource' class="form-control" placeholder="dataSource" id='dataSource'/>
+        </div>
         <br/>
-        <button id="btn-success" type="submit" class="btn btn-lg btn-primary btn-block"><h5 th:text="#{login.action}"/></button>
+        <button id="btn-success" type="submit" class="btn btn-lg btn-primary btn-block"><h5 th:text="#{login.action}"></h5></button>
         <br/>
       </form>
     </div>
-    <footer>
-      <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <a class="navbar-brand" th:href="#{project.repository}"><p th:text="#{login.footer}"/></a>
-      </nav>
-    </footer>
   </body>
 </html>
